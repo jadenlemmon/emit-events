@@ -5,7 +5,7 @@ class Events {
 
   emit = (event: string, payload: Object) => {
     const storedEvent = this.storedEvents[event];
-    if (storedEvent && typeof storedEvent === "function") {
+    if (storedEvent && typeof storedEvent === 'function') {
       storedEvent(payload);
     }
   };
