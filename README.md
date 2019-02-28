@@ -40,3 +40,25 @@ class Foo {
   }
 }
 ```
+
+## Can also subscribe to multiple events
+
+```javascript
+import { emit, subscribe } from 'emit-events';
+
+@subscribe(['onEvent', 'onEventAgain'])
+@emit()
+class Foo {
+  onEvent(payload) {
+    console.log(payload);
+  }
+
+  onEventAgain(payload) {
+    console.log(payload);
+  }
+
+  sendIt() {
+    this.emit('onEvent', { foo: 'bar' });
+  }
+}
+```
