@@ -14,14 +14,21 @@ class Events {
 
   emit = (event: string, payload: Object) => {
     const storedEvent = this.storedEvents[event];
-    if (storedEvent && typeof storedEvent === 'function') {
-      storedEvent(payload);
+    if (storedEvent && storedEvent.length) {
+      storedEvent.forEach((cb: any) => {
+        cb(payload);
+      });
+
       this.log(`Emitted: ${event}`, payload);
     }
   };
 
   subscribe(event: string, callback: Callback) {
-    this.storedEvents[event] = callback;
+    if (this.storedEvents[event]) {
+      this.storedEvents[event].push(callback);
+    } else {
+      this.storedEvents[event] = [callback];
+    }
     this.log(`Subscription Added: ${event}`, this.storedEvents);
   }
 }

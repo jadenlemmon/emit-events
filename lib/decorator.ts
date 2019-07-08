@@ -25,6 +25,7 @@ export function subscribe(event: string | string[]) {
 export function emit() {
   return function(constructor: any) {
     return class extends constructor {
+      emit: (a: string, b: Object) => void;
       constructor(...args: any[]) {
         super(...args);
         this.emit = Events.emit;
