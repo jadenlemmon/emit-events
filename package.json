@@ -1,6 +1,6 @@
 {
   "name": "emit-events",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Quick and dirty events",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
